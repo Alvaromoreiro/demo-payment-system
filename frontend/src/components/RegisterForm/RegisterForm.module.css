@@ -1,0 +1,38 @@
+.formContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+}
+
+.formContainer > form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+}
+
+.formContainer > form > label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.formContainer > form > .buttonGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
