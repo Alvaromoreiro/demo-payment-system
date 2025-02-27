@@ -1,0 +1,30 @@
+.TabsRoot {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.TabsList {
+    display: flex;
+    gap: 1rem;
+}
+
+.TabsTrigger {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.TabsTrigger[data-state='active'] {
+    background-color: var(--primary-color);
+    color: var(--primary-color-text);
+}
+
+.TabsContent {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--primary-color-text);
+}
