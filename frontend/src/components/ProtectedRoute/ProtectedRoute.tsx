@@ -1,15 +1,27 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import { verifyToken } from '../../services/auth';
 
-const useAuth = () => {
-    // Comprobar si la cookie 'access_token' existe
-    const cookies = document.cookie.split('; ');
-    const accessToken = cookies.find((row) => row.startsWith('access_token='));
-    return accessToken ? true : false;
+export const ProtectedRoute = ({ element }: { element: ReactNode }) => {
+    const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await verifyToken();
+                setAuthenticated(response.ok);
+            } catch (error) {
+                console.error('Error al verificar token:', error);
+                setAuthenticated(false);
+            }
+        };
+
+        checkAuth();
+    }, []);
+
+    if (authenticated === null) {
+        return <div>Cargando...</div>;
+    }
+
+    return authenticated ? <>{element}</> : <Navigate to="/" replace />;
 };
-
-const ProtectedRoute = ({ element }: { element: ReactNode }) => {
-    return useAuth() ? element : <Navigate to="/" replace />;
-};
-
-export default ProtectedRoute;

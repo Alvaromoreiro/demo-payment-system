@@ -24,3 +24,14 @@ export const registerUser = async ({ email, password }: RegisterAuth) => {
     });
     return data;
 };
+
+export const verifyToken = async () => {
+    const data = await fetch(ENDPOINT.VERIFY_TOKEN, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+    });
+    return data;
+};
